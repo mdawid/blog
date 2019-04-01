@@ -1,0 +1,9 @@
+/target
+/build
+/.gradle
+/.idea
+**/local.properties
+gradle-app.setting
+**/*.iml
+com_crashlytics_export_strings.xml
+crashlytics-build.properties

@@ -1,0 +1,43 @@
+import com.mobilebox.blog.data.EntryType;
+import com.mobilebox.blog.data.adapter.LogEntryId;
+import java.util.Date;
+
+CREATE TABLE logEntry (
+  id INTEGER AS LogEntryId NOT NULL PRIMARY KEY AUTOINCREMENT,
+  start INTEGER AS Date NOT NULL,
+  finish INTEGER AS Date,
+  type TEXT AS EntryType NOT NULL,
+  note TEXT
+);
+
+selectAll:
+SELECT *
+FROM logEntry
+ORDER BY start DESC;
+
+countLogEntries:
+SELECT count(*) FROM logEntry;
+
+logEntries:
+SELECT *
+FROM logEntry
+ORDER BY start DESC
+LIMIT :limit OFFSET :offset;
+
+insertLogEntry:
+INSERT INTO logEntry ( start, finish, type, note )
+VALUES (?, ?, ?, ?);
+
+updateFinishTime:
+UPDATE logEntry
+SET finish = ?
+WHERE id = ?;
+
+updateNote:
+UPDATE logEntry
+SET note = ?
+WHERE id = ?;
+
+delete:
+DELETE FROM logEntry
+WHERE id = ?;

@@ -1,0 +1,24 @@
+import com.mobilebox.blog.data.adapter.ContractorId;
+import com.mobilebox.blog.data.adapter.LogEntryId;
+
+CREATE TABLE entryJob (
+    entryId INTEGER AS LogEntryId NOT NULL,
+    contractorId INTEGER AS ContractorId NOT NULL,
+    PRIMARY KEY (contractorId, entryId),
+    FOREIGN KEY (entryId) REFERENCES logEntry(id),
+    FOREIGN KEY (contractorId) REFERENCES contractor(id)
+) WITHOUT ROWID;
+
+insertEntryJob:
+INSERT INTO entryJob (entryId, contractorId)
+VALUES (?, ?);
+
+selectAll:
+SELECT *
+FROM entryJob
+JOIN logEntry ON entryJob.entryId=logEntry.id
+JOIN contractor ON entryJob.contractorId=contractor.id;
+
+deleteByEntry:
+DELETE FROM entryJob
+WHERE entryId = ?;

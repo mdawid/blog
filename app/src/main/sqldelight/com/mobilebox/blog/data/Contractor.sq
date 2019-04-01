@@ -1,0 +1,21 @@
+import com.mobilebox.blog.data.adapter.ContractorId;
+import kotlin.collections.List;
+
+CREATE TABLE contractor (
+  id INTEGER AS ContractorId NOT NULL PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  tags TEXT AS List<String> NOT NULL
+);
+
+insertContractor:
+INSERT INTO contractor (name, tags)
+VALUES (?, ?);
+
+selectAll:
+SELECT *
+FROM contractor
+ORDER BY name ASC;
+
+delete:
+DELETE FROM contractor
+WHERE id = ?;
