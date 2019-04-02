@@ -42,7 +42,10 @@ object Schema : SqlDriver.Schema by BlogDatabase.Schema {
 
                 var start = Calendar.getInstance()
                 for (index in 1..1000) {
-                    val finish = start.apply { add(Calendar.SECOND, (0..3600).random()) }
+                    val finish = start.let { val copy = Calendar.getInstance()
+                        copy.time = it.time
+                        copy.add(Calendar.SECOND, (0..3600).random())
+                        copy }
                     logEntryQueries.insertLogEntry(
                         start.time,
                         finish.time,
