@@ -41,13 +41,13 @@ object Schema : SqlDriver.Schema by BlogDatabase.Schema {
                 contractorQueries.insertContractor("Indigo", listOf("indigo", "indygo", "indi"))
 
                 var start = Calendar.getInstance()
-                for (index in 1..100) {
+                for (index in 1..1000) {
                     val finish = start.apply { add(Calendar.SECOND, (0..3600).random()) }
                     logEntryQueries.insertLogEntry(
                         start.time,
                         finish.time,
                         EntryType.values().random(),
-                        "($index) " + ('A'..'Z').random() + ('a'..'z').random()
+                        "($index) " + ('A'..'Z').random() + ('a'..'z').random() + ('a'..'z').random()
                     )
                     start = finish
                 }
