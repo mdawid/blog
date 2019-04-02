@@ -11,7 +11,7 @@ import org.kodein.di.generic.with
 const val DATABASE_FILENAME: String = "databaseFileName"
 
 val dbModule = Kodein.Module("DbModule") {
-    constant(tag = DATABASE_FILENAME) with "blog.sqlite"
+    constant(tag = DATABASE_FILENAME) with "blog.db"
 
     bind<BlogDatabase>() with provider {
         createQueryWrapper(AndroidSqliteDriver(Schema, instance(), instance(tag = DATABASE_FILENAME)))
