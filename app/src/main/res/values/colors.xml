@@ -8,5 +8,5 @@
     <color name="timeStartBack">#FF7B9F35</color>
     <color name="timeFinishBack">#FFAA3939</color>
 
-    <drawable name="touchFeedback">#CFD8DC</drawable>
+    <drawable name="touchFeedback">#FFF0F0F0</drawable>
 </resources>
